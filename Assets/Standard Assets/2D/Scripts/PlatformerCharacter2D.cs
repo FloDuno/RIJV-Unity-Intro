@@ -3,6 +3,8 @@ using UnityEngine;
 
 namespace UnityStandardAssets._2D
 {
+    using CrossPlatformInput;
+
     public class PlatformerCharacter2D : MonoBehaviour
     {
         [SerializeField] private float m_MaxSpeed = 10f;                    // The fastest the player can travel in the x axis.
@@ -19,6 +21,8 @@ namespace UnityStandardAssets._2D
         private Animator m_Anim;            // Reference to the player's animator component.
         private Rigidbody2D m_Rigidbody2D;
         private bool m_FacingRight = true;  // For determining which way the player is currently facing.
+        
+        private bool m_Jump;
 
         private void Awake()
         {
@@ -29,9 +33,23 @@ namespace UnityStandardAssets._2D
             m_Rigidbody2D = GetComponent<Rigidbody2D>();
         }
 
+        private void Update()
+        {
+            if (!m_Jump)
+            {
+                // Read the jump input in Update so button presses aren't missed.
+                m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
+            }
+        }
 
         private void FixedUpdate()
         {
+            // Read the inputs.
+            bool crouch = CrossPlatformInputManager.GetButton("Fire1");
+            float h = CrossPlatformInputManager.GetAxis("Horizontal");
+            // Pass all parameters to the character control script.
+            Move(h, crouch, m_Jump);
+            m_Jump = false;
             m_Grounded = false;
 
             // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
