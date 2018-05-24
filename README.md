@@ -1,5 +1,7 @@
 # Tuto introduction à Unity
 
+Lien de téléchargement du projet en zip [ici](https://github.com/FloDuno/RIJV-Unity-Intro/releases/tag/1.0)
+
 ## Description des scènes 
 
 - 2dCharacter : Scene de démo du moteur 2D
