@@ -1,6 +1,6 @@
 # Tuto introduction à Unity
 
-Lien de téléchargement du projet en zip [ici](https://github.com/FloDuno/RIJV-Unity-Intro/releases/tag/1.0)
+Lien de téléchargement du projet en zip [ici](https://github.com/FloDuno/RIJV-Unity-Intro/archive/1.2.zip)
 
 ## Description des scènes 
 
